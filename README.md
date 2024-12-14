@@ -55,7 +55,9 @@
 9. Формат запису документа MongoDB відповідає вищезазначеним вимогам.
 
 ### Запуск та перевірка
-- 
+- docker-compose build
+- docker-compose up
+
 
 ### Ресурси
 - [main.py](./main.py)

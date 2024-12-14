@@ -274,3 +274,4 @@ if __name__ == "__main__":
         logger.error("Input ended unexpectedly. Exiting the application.")
     except KeyboardInterrupt:
         logger.info("Operation cancelled (Ctrl+C). Exiting the application.")
+
