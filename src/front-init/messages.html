@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand navbar-dark bg-dark" aria-label="Main navigation">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                    <img src="/logo.png" alt="logo" />
+                </a>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/message">Send message</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/all-messages">Messages</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container mt-5">
+        <h1 class="display-4 text-center">Messages</h1>
+        <div class="row mt-4">
+            <div class="col-md-8 offset-md-2">
+                <ul class="list-group" id="message-list">
+                    <!-- Messages will be dynamically inserted here -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function fetchMessages() {
+            try {
+                const response = await fetch('/messages');
+                const messages = await response.json();
+                const messageList = document.getElementById('message-list');
+
+                if (messages.length === 0) {
+                    messageList.innerHTML = '<li class="list-group-item text-center">No messages available.</li>';
+                    return;
+                }
+
+                messages.forEach(msg => {
+                    const listItem = document.createElement('li');
+                    listItem.className = 'list-group-item';
+                    listItem.innerHTML = `<strong>${msg.username}:</strong> ${msg.message} <span class="text-muted float-end">${new Date(msg.date).toLocaleString()}</span>`;
+                    messageList.appendChild(listItem);
+                });
+            } catch (error) {
+                console.error('Error fetching messages:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', fetchMessages);
+    </script>
+</body>
+
+</html>

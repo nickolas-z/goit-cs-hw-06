@@ -13,7 +13,7 @@
 Вам необхідно реалізувати найпростіший вебдодаток, не використовуючи вебфреймворк.
 
 ### Інструкція та вимоги до виконання
-За аналогією до розглянутого в конспекті прикладу, створіть вебдодаток з маршрутизацією для двох html-сторінок: `index.html` та `message.html`. За основу візьміть [наступні файли](./front-init).
+За аналогією до розглянутого в конспекті прикладу, створіть вебдодаток з маршрутизацією для двох html-сторінок: `index.html` та `message.html`. За основу візьміть [наступні файли](./src/front-init).
 
 **Також**:
 - обробіть під час роботи програми статичні ресурси: `style.css`, `logo.png`;
@@ -55,16 +55,22 @@
 9. Формат запису документа MongoDB відповідає вищезазначеним вимогам.
 
 ### Запуск та перевірка
-- docker-compose build
-- docker-compose up
+Дані бази даних зберігаються в окремому іменованому контейнері (можна також зберегти в локальну папку `/storage` за потреби).
+Папка `/src/logs` в контейнері з'єднана з локальною папкою `/logs` усі логи зберігаються сюди. В основному меню додано пункт "Messages" який відображає усі збережені повідомлення.
+Запуск:
+- `docker-compose build`
+- `docker-compose up`
+- Відкриваємо в браузері сторінку: "http://localhost:3000"
+- `docker-compose stop` або `docker-compose down -v` (якщо потрібно видалити контейнери)
 
+![messages](./image.png)
 
 ### Ресурси
-- [main.py](./main.py)
-- [/front-init](./front-init)
+- [./src/main.py](./src/main.py)
+- [./src/front-init](./src/front-init)
 
 ## Додатково
 - [Фінальне завдання](https://www.edu.goit.global/uk/learn/25315460/19336208/21189559/homework)
 - [https://github.com/nickolas-z/goit-cs-hw-06](https://github.com/nickolas-z/goit-cs-hw-06)
-- [goit-cs-hw-06-main.zip]()
+- [goit-cs-hw-06-main.zip](https://s3.eu-north-1.amazonaws.com/lms.goit.files/ccee6780-ce80-4eef-a868-97824619d49f%D0%94%D0%976_%D0%97%D1%83%D0%B1%D1%87%D0%B8%D0%BA%D0%9C%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%9C%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B9%D0%BE%D0%B2%D0%B8%D1%87.zip)
 - [Computer-Systems-and-Their-Fundamentals](https://github.com/nickolas-z/Computer-Systems-and-Their-Fundamentals)
